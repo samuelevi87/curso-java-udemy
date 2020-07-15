@@ -26,6 +26,7 @@ public class BoxUnbox {
 		System.out.println("Bom dia"); 
 		System.out.println("Boa Tarde"); 
 		System.out.println("Boa  noite"); 
+		System.out.println("Tchau");
 	}
 
 }
