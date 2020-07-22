@@ -23,7 +23,7 @@ public class BusinessAccount extends Account {
 	public void loan (double amount) {
 		if (amount <= loanLimit) {
 //			deposit(amount);
-			balance += amount - 10.0; //não é visível, porque está declarado como private e não protected.
+			balance += amount - 10.0; //não será visível, enquanto estiver declarado como private e não protected.
 		}
 	}
 	
