@@ -1,37 +1,23 @@
 package application;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Program2 {//Exemplificando o processo de abrir e fechar os streams manualmente.
+public class Program2 {//Solução para o erro do BufferedReader não identificar a quebra de linha
 
   public static void main(String[] args) {
 
     String path = "/home/sl3v1/eclipse-workspace/curso-java-udemy/Chapter11/FileManipulation/nameFile.txt";
     
-    BufferedReader br = null;
-    FileReader fr = null;
-    try {
-    fr = new FileReader(path);
-    br = new BufferedReader(fr);
-    String line = br.readLine();
-    while (line != null) {
-    System.out.println(line);
-    line = br.readLine();
+        // https://jsparrow.github.io/rules/buffered-reader-lines.html#description
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {			
+          br.lines().forEach(line -> {
+              System.out.println(line);
+          });}
+          catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+          }
+      }
     }
-    } catch (IOException e) {
-    System.out.println("Error: " + e.getMessage());
-    } finally {
-    try {
-    if (br != null)
-    br.close();
-    if (fr != null)
-    fr.close();
-    } catch (IOException e) {
-    e.printStackTrace();
-    }
-    }
-    }
-  }
+
